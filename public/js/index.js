@@ -1,3 +1,9 @@
+// index.js - Ponto de entrada para Render
+import('./server.js').catch(err => {
+  console.error('❌ Falha ao iniciar servidor:', err);
+  process.exit(1);
+});
+
 async function loadRooms() {
   const roomsContainer = document.getElementById('rooms');
   
