@@ -65,6 +65,35 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+app.get("/api/debug", async (req, res) => {
+  try {
+    const Room = (await import("./models/Room.js")).default;
+    
+    // Contar todas as salas (incluindo sorteadas)
+    const totalRooms = await Room.countDocuments({});
+    
+    // Buscar algumas salas como exemplo
+    const sampleRooms = await Room.find({}).limit(5).select("name drawn participants");
+    
+    res.json({
+      status: "debug",
+      mongoConnected: mongoose.connection.readyState === 1,
+      totalRooms: totalRooms,
+      sampleRooms: sampleRooms,
+      queryUsed: { drawn: false },
+      database: mongoose.connection.db?.databaseName,
+      collections: await mongoose.connection.db?.listCollections().toArray()
+    });
+    
+  } catch (error) {
+    res.json({
+      error: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+});
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log("=".repeat(50));
