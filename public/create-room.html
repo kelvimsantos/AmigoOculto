@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Sala - Amigo Oculto</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="index.html" style="position: absolute; left: 20px; top: 20px; color: white; font-size: 20px;">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      <h1>Criar Sala</h1>
+      <p>Configure seu sorteio secreto</p>
+    </div>
+
+    <div class="content">
+      <div id="message" class="message" style="display: none;"></div>
+      
+      <div class="form-group">
+        <label for="name"><i class="fas fa-door-open"></i> Nome da Sala</label>
+        <input type="text" id="name" placeholder="Ex: Amigo Oculto da Empresa" maxlength="50">
+        <small style="display: block; margin-top: 5px; color: #666; font-size: 12px;">
+          Dê um nome criativo para sua sala
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="roomPassword"><i class="fas fa-lock"></i> Senha da Sala</label>
+        <input type="password" id="roomPassword" placeholder="Senha para participantes entrarem">
+        <small style="display: block; margin-top: 5px; color: #666; font-size: 12px;">
+          Todos os participantes precisarão desta senha
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="adminPassword"><i class="fas fa-user-shield"></i> Senha do Administrador</label>
+        <input type="password" id="adminPassword" placeholder="Senha exclusiva para sortear">
+        <small style="display: block; margin-top: 5px; color: #666; font-size: 12px;">
+          Guarde esta senha! Só com ela você poderá realizar o sorteio
+        </small>
+      </div>
+
+      <button onclick="createRoom()" class="btn btn-primary">
+        <i class="fas fa-magic"></i> Criar Sala
+      </button>
+
+      <a href="index.html" class="link">
+        <i class="fas fa-undo"></i> Voltar para salas
+      </a>
+    </div>
+
+    <div class="footer">
+      <p><i class="fas fa-lightbulb"></i> Dica: Convide pelo menos 3 amigos para o sorteio!</p>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/createRoom.js"></script>
+</body>
+</html>

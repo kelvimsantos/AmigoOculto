@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎁 Amigo Oculto</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div style="font-size: 48px; margin-bottom: 10px;">🎁</div>
+      <h1>Amigo Oculto</h1>
+      <p>Crie ou participe de sorteios secretos</p>
+    </div>
+
+    <div class="content">
+      <div id="message" class="message" style="display: none;"></div>
+      
+      <h2 style="text-align: center; margin-bottom: 30px; color: #333;">
+        Salas Disponíveis
+      </h2>
+      
+      <div id="rooms" class="rooms-list">
+        <!-- Salas carregadas via JavaScript -->
+        <div class="loading-rooms" style="text-align: center; padding: 30px;">
+          <div class="loading" style="margin: 0 auto 15px;"></div>
+          <p>Carregando salas...</p>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin: 40px 0 20px;">
+        <p style="color: #666; margin-bottom: 20px;">Não encontrou sua sala?</p>
+        <a href="create-room.html" class="btn btn-primary">
+          <i class="fas fa-plus-circle"></i> Criar Nova Sala
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>🎭 Mantenha o segredo até a revelação!</p>
+      <p style="margin-top: 5px; font-size: 12px; opacity: 0.7;">
+        Desenvolvido com ❤️ para momentos especiais
+      </p>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
