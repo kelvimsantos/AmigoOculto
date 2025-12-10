@@ -19,7 +19,7 @@ const apiKey = defaultClient.authentications['api-key'];
 apiKey.apiKey = BREVO_API_KEY;
 const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
-// TESTE DE CONEXÃO (OPCIONAL, MAS ÚTIL)
+// TESTE DE CONEXÃO
 async function testConnection() {
   try {
     const accountApi = new SibApiV3Sdk.AccountApi();
@@ -30,7 +30,6 @@ async function testConnection() {
   }
 }
 
-// Executa teste em background
 testConnection();
 
 // FUNÇÃO: Enviar email para participantes
@@ -39,7 +38,8 @@ export async function sendEmail(to, name, friend, roomName) {
   console.log(`   🎁 Amigo oculto: ${friend}`);
   console.log(`   🏠 Sala: ${roomName}`);
   
-  const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail({
+  // 🔧 OBJETO SIMPLES (sem "new") - funciona no Render
+  const sendSmtpEmail = {
     sender: { 
       name: SENDER_NAME,
       email: SENDER_EMAIL
@@ -95,7 +95,7 @@ export async function sendEmail(to, name, friend, roomName) {
       </div>
     `,
     textContent: `SORTEIO DE AMIGO OCULTO CONCLUÍDO!\n\nOlá ${name}!\n\nO sorteio do grupo "${roomName}" foi realizado!\n\n🎁 SEU AMIGO OCULTO É: ${friend}\n\n⚠️ IMPORTANTE: Mantenha isso em SEGREDO até o dia da revelação!\n\nDivirta-se preparando o presente!\n\n---\nEmail automático do sistema de Amigo Oculto.`
-  });
+  };
 
   try {
     console.log(`📤 Enviando via Brevo API...`);
@@ -204,7 +204,8 @@ export async function sendSummaryToAdmin(adminEmail, roomName, participants) {
     </html>
   `;
 
-  const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail({
+  // 🔧 AQUI TAMBÉM: objeto simples (sem "new")
+  const sendSmtpEmail = {
     sender: { 
       name: SENDER_NAME,
       email: SENDER_EMAIL
@@ -213,7 +214,7 @@ export async function sendSummaryToAdmin(adminEmail, roomName, participants) {
     subject: `📊 RELATÓRIO: Sorteio ${roomName} - ${participants.length} participantes`,
     htmlContent: htmlContent,
     textContent: `RELATÓRIO DO SORTEIO\n\nSala: ${roomName}\nData: ${new Date().toLocaleString('pt-BR')}\n\n${participants.map((p, i) => `${i+1}. ${p.name} (${p.email}) → ${p.friend}`).join('\n')}`
-  });
+  };
 
   try {
     console.log(`📤 Enviando relatório via API...`);
