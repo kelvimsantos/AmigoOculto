@@ -6,7 +6,7 @@ dotenv.config();
 console.log("📧 Inicializando serviço de email Brevo API...");
 
 // CONFIGURAÇÕES - AGORA COM VARIÁVEIS DE AMBIENTE
-const BREVO_API_KEY = process.env.BREVO_API_KEY || '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';
+const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const SENDER_EMAIL = process.env.FROM_EMAIL || 'contatoshake@hotmail.com';
 const SENDER_NAME = process.env.SENDER_NAME || 'Mago';
 
